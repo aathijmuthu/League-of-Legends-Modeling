@@ -53,7 +53,7 @@ df = df[['gameid', 'datacompleteness', 'date', 'game', 'side', 'position',
 
 ## Univariate Analysis
 
-We performed out univariate analysis on the `totalgold` column of the dataset.
+We performed our univariate analysis on the `totalgold` column of the dataset, plotting its distribution with a histogram.
 
 <iframe
   src="assets/total_gold_distribution.html"
@@ -62,3 +62,20 @@ We performed out univariate analysis on the `totalgold` column of the dataset.
   frameborder="0"
 ></iframe>
 
+The histogram shows that the distribution of `totalgold` is approximately normal with a slight right skew, meaning  most players earn amounts near the average gold, with fewer players earning much lower or much higher amounts. 
+
+We also plotted the distribution of `xxxxxx`.
+
+
+## Bivariate Analysis
+
+We performed our bivariate analysis by plotting a scatter plot to describe the relationship between the `damagetochampions` column and the `gamelength` column.
+
+<iframe
+  src="assets/damage_vs_gamelength.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The scatter plot shows a somewhat positively linear relationship between the two variables. In shorter game lengths, the scatter plot is more densely packed, and there are players who deal lots and little damage in these shorter games. However, when you look at longer games, players are almost always dealing a large amount of damage.
