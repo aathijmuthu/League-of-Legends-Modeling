@@ -131,8 +131,16 @@ To confirm if missingness is explainable by observed variables (**making it MAR*
    - Minion kill timestamps could confirm if missingness occurs in specific game phases.  
 
 
-
 Since `minionkills` missingness appears **dependent on its unobserved value (zero or low kills)** rather than existing variables, I classify it as **NMAR**. However, with additional observed features (e.g., a zero-kill indicator), this could be reclassified as MAR.
+
+<iframe
+  src="assets/permutation_test_kills.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
 
 
 # Hypothesis Testing
