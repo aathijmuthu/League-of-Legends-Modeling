@@ -347,6 +347,36 @@ Compared to our **baseline model**, the **final model** demonstrated **clear imp
 ✅ **More Interpretable Feature Contributions**  
 - By breaking down `total cs` into `minion kills` and `monster kills`, the model learned **role-specific behaviors more effectively**.  
 
+# Fairness Analysis
+
+## Player Group Definitions
+
+- **Group X (High-Assist Players)**: Players with assists **greater than the median** assists from the training set.  
+- **Group Y (Low-Assist Players)**: Players with assists **less than or equal to the median** assists from the training set.  
+
+Using the median ensures:  
+✅ **Roughly balanced group sizes**  
+✅ **Leverages an existing model feature**, which is acceptable as long as performance is assessed **post-prediction** without retraining.  
+
+## Evaluation Metric: Macro-Averaged Precision  
+
+Since this is a **multi-class classification** problem, we'll use **macro-averaged precision**, which:  
+
+✅ **Calculates precision for each class (position) individually**  
+✅ **Ensures fairness** by evaluating performance across **all positions**, not just the most common ones  
+
+This approach aligns with the provided example and ensures the model performs well **for every position**, not just those with higher frequency. 
+
+## Hypothesis Testing  
+
+- **Null Hypothesis**: The model is **fair**. Its **macro-averaged precision** for **high-assist players (Group X)** and **low-assist players (Group Y)** is **the same**, and any observed differences are due to random chance.  
+
+- **Alternative Hypothesis**: The model is **unfair**. Its **macro-averaged precision** for **Group X** differs from that of **Group Y**.  
+
+We’ll use a **two-sided test**, with the **test statistic** being the **mean absolute difference of precision scores** between the two groups.  
+
+
+
 
 
 
