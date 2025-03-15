@@ -365,7 +365,7 @@ This approach aligns with the provided example and ensures the model performs we
 
 - **Alternative Hypothesis**: The model is **unfair**. Its **macro-averaged precision** for **Group X** differs from that of **Group Y**.  
 
-We’ll use a **two-sided test**, with the **test statistic** being the **mean absolute difference of precision scores** between the two groups.  
+We’ll use a **two-sided test** with a significance level of 0.05, with the **test statistic** being the **mean absolute difference of precision scores** between the two groups.  
 
 ## The Permutation Test  
 
