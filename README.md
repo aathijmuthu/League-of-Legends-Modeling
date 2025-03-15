@@ -136,8 +136,6 @@ To confirm if missingness is explainable by observed variables (**making it MAR*
 Since `minionkills` missingness appears **dependent on its unobserved value (zero or low kills)** rather than existing variables, I classify it as **NMAR**. However, with additional observed features (e.g., a zero-kill indicator), this could be reclassified as MAR.
 
 
-The pivot table confirms the scatterplot, and we see that the total damage mean damage is increasing as the game length also increases. Particularly, we see a steeper increase in total damage from 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because there are a lot of team fights at the end of the game. 
-
 # Hypothesis Testing
 
 ## Hypothesis Testing for Performance Comparison
