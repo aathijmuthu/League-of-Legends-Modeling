@@ -247,5 +247,41 @@ After running the model, we get the following model metrics.
 
 We believe our model was pretty good, as it performs well with an accuracy of 95%, indicating it makes correct predictions most of the time. The high F1-Scores across all roles, particularly for the support role (0.99), suggest the model balances precision and recall effectively, minimizing both false positives and false negatives. While the performance for the top role (F1-Score of 0.91) is slightly lower, the overall results, including a strong macro and weighted average F1-Score of 0.95, show that the model generalizes well across different classes. Overall, the model demonstrates robustness and reliability in predicting player roles.
 
+# Final Model
+
+## Feature Engineering and Transformation
+
+Here, we will add four new features and remove one feature.  
+
+- **New Features:**  
+  - `monster kills` and `minion kills`: These provide insights into whether a player plays the **support** or **jungle** role.  
+    - Support players generally have **low** `minion kills` and `monster kills`.  
+    - Junglers tend to have **high** `monster kills` but **low** `minion kills`.  
+  - `damage per minute` and `earned gold per minute`.  
+
+- **Removed Feature:**  
+  - `total cs` (creep score), since it is simply the sum of `minion kills` and `monster kills`, making it redundant.  
+
+- **Feature Transformations:**  
+  - We will apply a **Quantile Transformation** to `damage per minute`, as it has extreme values and requires a method that is **robust to outliers**.  
+  - We will use a **Log Transformation** on `earned gold per minute` to **compress extreme values** and **reduce skewness** while preserving relative differences between data points, making it more suitable for modeling.  
+
+## Hyperparameter Tuning  
+
+In this section, we will tune the following hyperparameters: **n_estimators** and **max_depth**.  
+
+### 🔹 n_estimators (Number of Trees)  
+- Determines how many **decision trees** are included in the random forest.  
+- Increasing **n_estimators** generally improves accuracy by reducing variance, as more trees average out individual errors.  
+- However, beyond a certain point, accuracy gains become **minimal**, while **computational cost** continues to rise.  
+- **Goal:** Identify the **optimal number of trees** that delivers high accuracy without unnecessary computation.  
+
+### 🔹 max_depth (Maximum Depth of Each Tree)  
+- Controls how **deep or complex** each tree in the forest can grow.  
+- **Too shallow (low max_depth):** Model may **underfit**, missing important patterns.  
+- **Too deep (high max_depth):** Model may **overfit**, memorizing noise instead of general patterns.  
+- **Goal:** Find the right balance to ensure the model captures the right level of complexity for **strong generalization** on unseen data.  
+
+
 
 
