@@ -133,12 +133,55 @@ To confirm if missingness is explainable by observed variables (**making it MAR*
 
 Since `minionkills` missingness appears **dependent on its unobserved value (zero or low kills)** rather than existing variables, I classify it as **NMAR**. However, with additional observed features (e.g., a zero-kill indicator), this could be reclassified as MAR.
 
+
+I will analyze the `champion` column, which has **25,098 missing values**—a substantial and likely significant portion in a *League of Legends* game statistics dataset. While other candidates like `playername` (25,098 missing) and `playerid` (27,345 missing) exhibit similar missingness, `champion` is more relevant to gameplay and modeling (e.g., predicting player position), making it a meaningful choice.
+
+---
+
+## **Defining the Permutation Test**
+
+To determine whether the missingness of `champion` depends on other columns, we will perform a **permutation test** as follows:
+
+### **1. Create a Binary Indicator**
+- Define a binary variable:  
+  - **1** if `champion` is missing  
+  - **0** if `champion` is present  
+
+### **2. Test Dependency Using a Permutation Test**
+- Compare a chosen statistic between rows with and without missing `champion` values.
+- Conduct a **two-sided test** to identify:
+  - **A dependent column** (statistically significant, p-value < 0.05)
+  - **An independent column** (not statistically significant, p-value ≥ 0.05)
+
+### **3. Select Statistics for Comparison**
+- **For numerical columns** (e.g., `kills`, `gamelength`):  
+  - Compute the **difference in means** between groups.
+- **For categorical columns** (e.g., `result`):  
+  - Compute the **difference in proportions** of a specific category.
+
+This approach will help determine whether `champion` missingness is associated with other game-related variables, shedding light on possible missing data mechanisms.
+
+
 <iframe
   src="assets/permutation_test_kills.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+## **Permutation Test Result**
+
+### **Result for `kills`**
+- **Observed Difference** = **11.5942**  
+  - The mean `kills` for rows where `champion` is missing differs by **11.5942** from the mean where it’s not missing.  
+
+- **P-value** = **0.0000**  
+  - This is **highly significant** (p < 0.05), indicating a **strong dependency** between `champion` missingness and `kills`.  
+
+### **Interpretation**
+The missingness of `champion` is **not random** with respect to `kills`.  
+- Rows with missing `champion` values have **significantly different kill counts** compared to rows where `champion` is present.  
+- Since the difference is positive, this suggests that **players with missing `champion` values tend to have higher kills** (unless otherwise specified).  
 
 
 # Hypothesis Testing
