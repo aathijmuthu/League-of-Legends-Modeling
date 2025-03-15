@@ -139,7 +139,7 @@ Since `minionkills` missingness appears **dependent on its unobserved value (zer
 
 ## Hypothesis Testing for Performance Comparison
 
-In this analysis, we tested the performance difference between **mid laners** and **top laners** across all games:
+In this analysis, we tested the performance difference between **mid laners** and **top laners** across all games with a significance level of 0.05:
 
 1. **Null Hypothesis**: 
    - There is **no difference** in the average performance between mid laners and top laners across all games.
