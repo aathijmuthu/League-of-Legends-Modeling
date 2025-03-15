@@ -396,4 +396,4 @@ P-value: 0.8610
 
 <img width="733" alt="image" src="assets/Xnip2025-03-14_23-13-37.jpg" />
 
-Because the p-value is greater than the significance level of 0.05, we fail to reject the null hypothesis, suggesting that there is strong evidence that the model is fair, and that any observed differences between mAP for high-assist and low-assist players are due to random chance.
+Because the p-value is greater than the significance level of 0.05, we fail to reject the null hypothesis, suggesting that there is not enough evidence to suggest that the model is unfair. Our conclusion indicates that our model is fair and that any observed differences between mAP for high-assist and low-assist players are  due to random chance.
