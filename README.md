@@ -228,6 +228,8 @@ We used the following features in our model to predict a player's role based on 
 
 After running the model, we get the following model metrics.
 
+<div align="center">
+
 **Accuracy**: 0.95
 
 **Classification Report**:
@@ -242,6 +244,8 @@ After running the model, we get the following model metrics.
 **Overall Accuracy**: 0.95  
 **Macro Avg**: 0.95 | 0.95 | 0.95  
 **Weighted Avg**: 0.95 | 0.95 | 0.95
+
+</div>
 
 We believe our model was pretty good, as it performs well with an accuracy of 95%, indicating it makes correct predictions most of the time. The high F1-Scores across all roles, particularly for the support role (0.99), suggest the model balances precision and recall effectively, minimizing both false positives and false negatives. While the performance for the top role (F1-Score of 0.91) is slightly lower, the overall results, including a strong macro and weighted average F1-Score of 0.95, show that the model generalizes well across different classes. Overall, the model demonstrates robustness and reliability in predicting player roles.
 
