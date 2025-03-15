@@ -100,6 +100,41 @@ In order to confirm the scatter plot, we were curious to see how total damage di
 
 </div>
 
+# Assessment of Missingness
+
+## Identifying NMAR Missingness in `minionkills`
+
+I believe the `minionkills` column in my dataset is **Not Missing at Random (NMAR)** due to its connection to gameplay mechanics in *League of Legends*. This column has **~3,796 missing values**, whereas key statistics like `kills`, `deaths`, `assists`, and `totalgold` have **no missing values**. Other columns, such as `champion` (**25,098 missing**) and `total cs` (**25,098 missing**), exhibit far greater missingness, making `minionkills` stand out due to its **moderate** yet **patterned** missingness.
+
+### Why `minionkills` is NMAR
+
+- `minionkills` represents the number of minions a player has killed.
+- Junglers primarily earn gold and experience from **monsters**, not minions.
+- Due to game mechanics (e.g., **jungle item penalties**), some Junglers have **zero minion kills**.
+- I hypothesize that **missing `minionkills` values correspond to zero minion kills**, meaning they are missing **because of their own value**, making the missingness NMAR.
+
+### Distinguishing NMAR from MAR & MCAR
+
+- **Not MCAR**: Missingness is not completely random; it is linked to a player’s role (Jungle).
+- **Not MAR**: Other observed variables (e.g., `position`) **suggest** Jungle playstyle but do not explicitly determine why `minionkills` is missing.
+
+### Additional Data Needed to Reclassify as MAR
+
+To confirm if missingness is explainable by observed variables (**making it MAR**), I would need:
+
+1. **A Binary Indicator (`had_no_minion_kills`)**  
+   - If players with `minionkills` missing are explicitly flagged as having zero kills, missingness could be MAR.  
+
+2. **Role-Specific Behavior Logs**  
+   - Data on jungle items (e.g., *Smite* usage) could validate if missing `minionkills` aligns with Jungle players.  
+
+3. **Game Event Timestamps**  
+   - Minion kill timestamps could confirm if missingness occurs in specific game phases.  
+
+
+
+Since `minionkills` missingness appears **dependent on its unobserved value (zero or low kills)** rather than existing variables, I classify it as **NMAR**. However, with additional observed features (e.g., a zero-kill indicator), this could be reclassified as MAR.
+
 
 The pivot table confirms the scatterplot, and we see that the total damage mean damage is increasing as the game length also increases. Particularly, we see a steeper increase in total damage from 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because there are a lot of team fights at the end of the game. 
 
