@@ -57,8 +57,6 @@ We performed our univariate analysis on the `totalgold` column of the dataset, p
 
 The histogram shows that the distribution of `totalgold` is approximately normal with a slight right skew, meaning  most players earn amounts near the average gold, with fewer players earning much lower or much higher amounts. 
 
-We also plotted the distribution of `xxxxxx`.
-
 
 ## Bivariate Analysis
 
