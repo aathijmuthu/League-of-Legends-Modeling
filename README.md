@@ -130,3 +130,16 @@ $$
 $$
 
 This framework allows us to determine if there is a statistically significant difference in the performance of mid laners compared to top laners.
+
+Our observed difference (mean of mid performance - mean of top performance) was 6.386495228223918. But, we need to run a permutation test in order to conclude how statistically significant this value is.
+
+## Permutation Test for Statistical Significance
+
+To assess the statistical significance of the observed results, we performed a **permutation test**:
+
+1. **Shuffling Position Labels**: The position labels were randomly shuffled to break any association between the features and the target variable (position).
+2. **Recomputation of Mean Difference**: For each shuffle, we recomputed the mean difference between the predicted and actual values.
+3. **Repetitions**: The process was repeated **10,000 times** to generate a distribution of mean differences under the null hypothesis.
+4. **P-value Calculation**: The **p-value** was computed by comparing the observed mean difference to the distribution of mean differences generated through permutation.
+
+This process allowed us to determine whether the observed result was statistically significant or could have occurred by chance.
