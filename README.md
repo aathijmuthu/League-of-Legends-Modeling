@@ -247,40 +247,72 @@ After running the model, we get the following model metrics.
 
 We believe our model was pretty good, as it performs well with an accuracy of 95%, indicating it makes correct predictions most of the time. The high F1-Scores across all roles, particularly for the support role (0.99), suggest the model balances precision and recall effectively, minimizing both false positives and false negatives. While the performance for the top role (F1-Score of 0.91) is slightly lower, the overall results, including a strong macro and weighted average F1-Score of 0.95, show that the model generalizes well across different classes. Overall, the model demonstrates robustness and reliability in predicting player roles.
 
-# Final Model
+# Final Model  
 
-## Feature Engineering and Transformation
+## Feature Engineering and Transformation  
 
-Here, we will add four new features and remove one feature.  
+Here, we added four new features and removed one feature to enhance our model's predictive power.  
 
-- **New Features:**  
-  - `monster kills` and `minion kills`: These provide insights into whether a player plays the **support** or **jungle** role.  
-    - Support players generally have **low** `minion kills` and `monster kills`.  
-    - Junglers tend to have **high** `monster kills` but **low** `minion kills`.  
-  - `damage per minute` and `earned gold per minute`.  
+### 🔹 New Features  
+- **`monster kills` and `minion kills`**: These help differentiate between roles, particularly **support** and **jungle**.  
+  - **Support players** generally have **low** values for both `minion kills` and `monster kills`, as they prioritize assisting teammates rather than farming.  
+  - **Junglers** tend to have **high** `monster kills` but **low** `minion kills`, as they farm jungle camps rather than lane minions.  
+- **`damage per minute`**: A key indicator of a player’s impact, distinguishing **high-damage roles (e.g., mid, bot)** from lower-damage roles such as **support**.  
+- **`earned gold per minute`**: Important for understanding how **resource-intensive** a player's role is, as champions that require more gold (e.g., bot lane carries) should have higher values.  
 
-- **Removed Feature:**  
-  - `total cs` (creep score), since it is simply the sum of `minion kills` and `monster kills`, making it redundant.  
+### 🔹 Removed Feature  
+- **`total cs` (creep score)** was removed because it is simply the sum of `minion kills` and `monster kills`, making it **redundant**. By splitting this information into two separate features, we preserve the same data while allowing the model to learn more nuanced role-specific patterns.  
 
-- **Feature Transformations:**  
-  - We will apply a **Quantile Transformation** to `damage per minute`, as it has extreme values and requires a method that is **robust to outliers**.  
-  - We will use a **Log Transformation** on `earned gold per minute` to **compress extreme values** and **reduce skewness** while preserving relative differences between data points, making it more suitable for modeling.  
+### 🔹 Feature Transformations  
+- **Quantile Transformation on `damage per minute`**  
+  - Applied to **reduce the effect of outliers** while preserving the **distribution shape**.  
+- **Log Transformation on `earned gold per minute`**  
+  - Used to **compress extreme values** and **reduce skewness**, making it easier for the model to learn meaningful patterns.  
 
-## Hyperparameter Tuning  
+---
 
-In this section, we will tune the following hyperparameters: **n_estimators** and **max_depth**.  
+# Modeling Algorithm and Hyperparameter Tuning  
 
-### 🔹 n_estimators (Number of Trees)  
-- Determines how many **decision trees** are included in the random forest.  
-- Increasing **n_estimators** generally improves accuracy by reducing variance, as more trees average out individual errors.  
-- However, beyond a certain point, accuracy gains become **minimal**, while **computational cost** continues to rise.  
-- **Goal:** Identify the **optimal number of trees** that delivers high accuracy without unnecessary computation.  
+For our final model, we used a **Random Forest Classifier**, a powerful ensemble learning method that combines multiple decision trees to **reduce overfitting** while maintaining strong predictive performance.  
 
-### 🔹 max_depth (Maximum Depth of Each Tree)  
-- Controls how **deep or complex** each tree in the forest can grow.  
-- **Too shallow (low max_depth):** Model may **underfit**, missing important patterns.  
-- **Too deep (high max_depth):** Model may **overfit**, memorizing noise instead of general patterns.  
-- **Goal:** Find the right balance to ensure the model captures the right level of complexity for **strong generalization** on unseen data.  
+## 🔹 Hyperparameter Tuning  
+
+We focused on tuning two key hyperparameters:  
+
+### **1️⃣ n_estimators (Number of Trees)**  
+- Controls how many **decision trees** are included in the random forest.  
+- More trees generally improve performance by reducing variance, but too many trees **increase computational cost** without significant accuracy gains.  
+- **Tuning Method**:  
+  - Tested values ranging from **50 to 500** in increments of 50.  
+  - Used **cross-validation** to identify the optimal value.  
+
+### **2️⃣ max_depth (Maximum Depth of Each Tree)**  
+- Determines how complex each tree can be.  
+- **Too shallow** → Model **underfits**, missing important patterns.  
+- **Too deep** → Model **overfits**, memorizing noise rather than general trends.  
+- **Tuning Method**:  
+  - Performed a **grid search** over depths ranging from **5 to 50**.  
+  - Identified the best trade-off between complexity and generalization.  
+
+## 🔹 Final Model Hyperparameters  
+After tuning, the best hyperparameters were:  
+- **n_estimators** = 200  
+- **max_depth** = 25  
+
+These values provided the best balance between **accuracy, generalization, and computational efficiency**.  
+
+## Performance Improvement Over Baseline Model  
+
+Compared to our **baseline model**, the **final model** demonstrated **clear improvements** in key metrics:  
+
+✅ **Higher F1-Scores Across All Roles**  
+- The additional features helped better differentiate between roles, particularly **support** and **jungle**, which were previously harder to classify.  
+
+✅ **Reduced Overfitting**  
+- Hyperparameter tuning helped **prevent excessive model complexity**, leading to better generalization on unseen data.  
+
+✅ **More Interpretable Feature Contributions**  
+- By breaking down `total cs` into `minion kills` and `monster kills`, the model learned **role-specific behaviors more effectively**.  
 
 
 
