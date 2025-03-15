@@ -86,7 +86,6 @@ The box plot shows a shift in the two box plots. When looking at `earned gpm` in
 
 In order to confirm the scatter plot, we were curious to see how total damage differed between different game lengths. To do so, we created a pivot table and created five different buckets for the game lengths.
 
-<div align="center">
 
 | gamelength_minutes | damagetochampions  |
 |--------------------|--------------------|
@@ -96,7 +95,7 @@ In order to confirm the scatter plot, we were curious to see how total damage di
 | (40, 50]           | 20618.585977       |
 | (50, 60]           | 27926.046256       |
 
-</div>
+
 
 The table confirms the insight of the scatter plot. Here, we see a sharp increase from damage in 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because nearing the end of the game, there are more team fights, and thus more damage to be dealt.
 
@@ -158,9 +157,7 @@ In this analysis, we tested the performance difference between **mid laners** an
 
 We defined `performance` to be the following:
 
-$$
-(5 \times \text{kills}) + (2 \times \text{assists}) - (2 \times \text{deaths}) + \frac{4 \times \text{total cs}}{100}
-$$
+<img width="733" alt="image" src="assets/Xnip2025-03-14_23-34-23.jpg" />
 
 This framework allows us to determine if there is a statistically significant difference in the performance of mid laners compared to top laners.
 
@@ -187,11 +184,9 @@ P-value: 0.0000
 
 Because the p-value is 0, we reject the null hypothesis, suggesting that there is strong evidence that mid laners have a higher average performance than top laners across all games.
 
-<div align='center'>
 
 <img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
 
-</div>
 
 # Framing a Prediction Problem
 
@@ -261,8 +256,6 @@ We used the following features in our model to predict a player's role based on 
 
 After running the model, we get the following model metrics.
 
-<div align="center">
-
 **Classification Report**:
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
@@ -276,7 +269,6 @@ After running the model, we get the following model metrics.
 **Macro Avg**: 0.95 | 0.95 | 0.95  
 **Weighted Avg**: 0.95 | 0.95 | 0.95
 
-</div>
 
 We believe our model was pretty good, as it performs well with an accuracy of 95%, indicating it makes correct predictions most of the time. The high F1-Scores across all roles, particularly for the support role (0.99), suggest the model balances precision and recall effectively, minimizing both false positives and false negatives. While the performance for the top role (F1-Score of 0.91) is slightly lower, the overall results, including a strong macro and weighted average F1-Score of 0.95, show that the model generalizes well across different classes. Overall, the model demonstrates robustness and reliability in predicting player roles.
 
