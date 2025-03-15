@@ -50,3 +50,15 @@ df = df[['gameid', 'datacompleteness', 'date', 'game', 'side', 'position',
 | ESPORTSTMNT01 | complete         | 2022-01-10 07:44:08 | 1    | Blue | bot        | Gamin      | oe:player:998b3e49b01ecc41eacc392477a98cf | Samira   | 1713       | 0      | 2     | 4      | 2       | 10605     | 226.0    | 239.4046   | 11106.0           | 389.0018 | 208.0       | 18.0         |
 | ESPORTSTMNT01 | complete         | 2022-01-10 07:44:08 | 1    | Blue | sup        | Loopy      | oe:player:e9741b3a238723ea6380ef2113fae63 | Leona    | 1713       | 0      | 1     | 5      | 6       | 6678      | 42.0     | 101.8564   | 3663.0            | 128.3012 | 42.0        | 0.0          |
 
+
+## Univariate Analysis
+
+We performed out univariate analysis on the `totalgold` column of the dataset.
+
+<iframe
+  src="assets/total_gold_distribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
