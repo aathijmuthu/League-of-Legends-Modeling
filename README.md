@@ -160,4 +160,43 @@ Because the p-value is 0, we reject the null hypothesis, suggesting that there i
 
 </div>
 
+# Framing a Prediction Problem
+
+## 🎯 Prediction Problem  
+The goal is to **predict the role of a player** in a *League of Legends* game based on their **post-game statistics**.  
+
+## 🏷️ Type of Problem  
+This is a **multiclass classification** problem because:  
+- The player’s role (e.g., **Top, Jungle, Mid, ADC, Support**) is a **categorical variable** with more than two possible classes.  
+- It is **not** binary classification since there are multiple distinct roles.  
+- It is **not** regression since we are predicting a **category**, not a continuous value.  
+
+## 📌 Response Variable  
+- The **response variable** is **position**, which represents the player’s role in the game.  
+- This was chosen because:  
+  - Position is a **fundamental aspect** of a player's contribution to the team.  
+  - Position is directly tied to post-game statistics, making it a **suitable target** for prediction.  
+
+## 📊 Evaluation Metric: Macro-Averaged F1-Score  
+The **F1-score** (specifically, **macro-averaged F1-score**) is used to evaluate the model.  
+
+### 🔹 Why F1-Score?  
+- The **F1-score** balances **precision** (prediction accuracy) and **recall** (coverage of true instances).  
+- The **macro-averaged** version treats **all roles equally**, which is crucial in **multiclass classification** and helps address class imbalances (e.g., fewer Junglers than Supports).  
+
+### ⚖️ Why F1-Score Over Other Metrics?  
+- **Versus Accuracy**:  
+  - Accuracy can be **misleading** if the dataset is imbalanced (e.g., if most players are Supports, predicting "Support" often can yield high accuracy but little value).  
+  - The F1-score ensures **per-class performance** matters.  
+- **Versus Precision or Recall Alone**:  
+  - Precision emphasizes **correctness**, while recall emphasizes **coverage**.  
+  - Since both are important, the **F1-score provides balance**.  
+
+## ✅ Justification for Information Availability  
+At the **time of prediction**, the game has **concluded**, and all post-game statistics are available:  
+- **Kills, deaths, assists, monsterkills, minionkills, DPM, earned GPM, and champion** are recorded **at the end of the match**.  
+- We are **not** predicting future outcomes (e.g., the next game’s performance) but rather **inferring the player’s role** from completed game data.  
+- This ensures that **all features used in training and prediction** are **known at the time of prediction**, keeping the problem well-defined.  
+
+For example, we **wouldn’t use** features like *“next game’s kills”* because they **aren’t available post-game**. The selected feature set avoids such issues entirely.  
 
