@@ -230,8 +230,6 @@ After running the model, we get the following model metrics.
 
 <div align="center">
 
-**Accuracy**: 0.95
-
 **Classification Report**:
 | Class | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
