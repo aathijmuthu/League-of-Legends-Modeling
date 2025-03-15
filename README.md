@@ -144,13 +144,14 @@ To assess the statistical significance of the observed results, we performed a *
 
 This process allowed us to determine whether the observed result was statistically significant or could have occurred by chance.
 
-<img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
+After running the permutation test to test for statistical significance, we concluded with the following values.
 
-Our final statistics were:
-```
+```python
 Observed Difference in Means: 6.386
 Average value of Permuted Differences: -0.000327
 P-value: 0.0000
 ```
 
 Because the p-value is 0, we reject the null hypothesis, suggesting that there is strong evidence that mid laners have a higher average performance than top laners across all games.
+
+<img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
