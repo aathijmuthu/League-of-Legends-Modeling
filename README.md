@@ -154,4 +154,10 @@ P-value: 0.0000
 
 Because the p-value is 0, we reject the null hypothesis, suggesting that there is strong evidence that mid laners have a higher average performance than top laners across all games.
 
+<div align='center'>
+
 <img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
+
+</div>
+
+
