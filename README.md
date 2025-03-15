@@ -200,3 +200,50 @@ At the **time of prediction**, the game has **concluded**, and all post-game sta
 
 For example, we **wouldn’t use** features like *“next game’s kills”* because they **aren’t available post-game**. The selected feature set avoids such issues entirely.  
 
+# Baseline Model
+
+## Our Features
+
+We used the following features in our model to predict a player's role based on their post-game data (e.g., kills, deaths, assists, etc.):
+
+- **Quantitative Features**:
+  - `kills`
+  - `deaths`
+  - `assists`
+  - `total_cs` 
+
+- **Categorical (Nominal) Feature**:
+  - `champion` (one-hot encoded)
+
+
+## Encoding and Model Selection
+
+- **Encoding:**  
+  - Performed **One-Hot Encoding** for the categorical column.  
+  - Left numerical columns **unchanged**.  
+
+- **Model Selection:**  
+  - Chose **Random Forest Classifier** because it effectively handles both **numerical** and **categorical** features (after encoding).  
+  - It is **robust to overfitting** compared to a single decision tree, making it a strong choice for our dataset.  
+
+After running the model, we get the following model metrics.
+
+**Accuracy**: 0.95
+
+**Classification Report**:
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| bot   | 0.96      | 0.97   | 0.96     | 4920    |
+| jng   | 0.95      | 0.95   | 0.95     | 4946    |
+| mid   | 0.93      | 0.92   | 0.93     | 5049    |
+| sup   | 0.99      | 0.98   | 0.99     | 4829    |
+| top   | 0.91      | 0.92   | 0.91     | 4901    |
+
+**Overall Accuracy**: 0.95  
+**Macro Avg**: 0.95 | 0.95 | 0.95  
+**Weighted Avg**: 0.95 | 0.95 | 0.95
+
+We believe our model was pretty good, as it performs well with an accuracy of 95%, indicating it makes correct predictions most of the time. The high F1-Scores across all roles, particularly for the support role (0.99), suggest the model balances precision and recall effectively, minimizing both false positives and false negatives. While the performance for the top role (F1-Score of 0.91) is slightly lower, the overall results, including a strong macro and weighted average F1-Score of 0.95, show that the model generalizes well across different classes. Overall, the model demonstrates robustness and reliability in predicting player roles.
+
+
+
