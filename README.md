@@ -33,7 +33,7 @@ By analyzing these **performance statistics**, we aim to uncover how **different
 
 
 ### Selecting Relevant Columns
-To save time in the further data cleaning steps, we first only kept the relevant columns: `gameid`, `datacompleteness`, `date`, `game`, `side`, `position`, `playername`, `playerid`, `champion`, `gamelength`, `result`, `kills`, `deaths`, `assists`, `totalgold`, `total cs`, `earned gpm`, `damagetochampions`, `dpm`, `minionkills`, and `monsterkills`. Additionally, we identified approximately **25,000 missing data points** out of a total **150,000**. Given that missing values accounted for only **16.7%** of the dataset, we determined that **dropping all null values** was a reasonable and efficient cleaning approach.  
+To save time in the further data cleaning steps, we first only kept the relevant columns: `gameid`, `datacompleteness`, `date`, `game`, `side`, `position`, `playername`, `playerid`, `champion`, `gamelength`, `result`, `kills`, `deaths`, `assists`, `totalgold`, `total cs`, `earned gpm`, `damagetochampions`, `dpm`, `minionkills`, and `monsterkills`. Additionally, we identified approximately **25,000 missing data points** out of a total **150,000**. Given that missing values accounted for only **16.7%** of the dataset, we determined that dropping all null values was a reasonable and efficient cleaning approach.  
 
 | gameid        | datacompleteness | date                | game | side | position   | playername | playerid                                | champion | gamelength | result | kills | deaths | assists | totalgold | total cs | earned gpm | damagetochampions | dpm     | minionkills | monsterkills |
 |---------------|------------------|---------------------|------|------|------------|------------|-----------------------------------------|----------|------------|--------|-------|--------|---------|-----------|----------|------------|-------------------|---------|-------------|--------------|
@@ -99,6 +99,8 @@ In order to confirm the scatter plot, we were curious to see how total damage di
 | (50, 60]           | 27926.046256       |
 
 </div>
+
+The table confirms the insight of the scatter plot. Here, we see a sharp increase from damage in 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because nearing the end of the game, there are more team fights, and thus more damage to be dealt.
 
 # Assessment of Missingness
 
