@@ -124,8 +124,6 @@ In this analysis, we tested the performance difference between **mid laners** an
    - The test statistic used to evaluate the hypothesis is the **difference in the mean performance** between the two groups (mid laners and top laners).
 
 We defined `performance` to be the following:
-<img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
-
 
 $$
 (5 \times \text{kills}) + (2 \times \text{assists}) - (2 \times \text{deaths}) + \frac{4 \times \text{total cs}}{100}
@@ -145,3 +143,14 @@ To assess the statistical significance of the observed results, we performed a *
 4. **P-value Calculation**: The **p-value** was computed by comparing the observed mean difference to the distribution of mean differences generated through permutation.
 
 This process allowed us to determine whether the observed result was statistically significant or could have occurred by chance.
+
+<img width="733" alt="image" src="https://github.com/user-attachments/assets/5c339237-3d9e-4819-af84-84a4f26e93f2" />
+
+Our final statistics were:
+```
+Observed Difference in Means: 6.386
+Average value of Permuted Differences: -0.000327
+P-value: 0.0000
+```
+
+Because the p-value is 0, we reject the null hypothesis, suggesting that there is strong evidence that mid laners have a higher average performance than top laners across all games.
