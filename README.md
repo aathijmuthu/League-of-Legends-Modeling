@@ -78,7 +78,7 @@ We performed our bivariate analysis by plotting a scatter plot to describe the r
   frameborder="0"
 ></iframe>
 
-The scatter plot shows a somewhat positively linear relationship between the two variables. In shorter game lengths, the scatter plot is more densely packed, and there are players who deal lots and little damage in these shorter games. However, when you look at longer games, players are almost always dealing a large amount of damage.
+The scatter plot shows a somewhat positively linear relationship between the two variables. In shorter game lengths, the scatter plot is more densely packed, and there are players who deal lots and little damage in these shorter games. However, when you look players who are dealing a lot of damage, these are almost always occuring in longer games.
 
 We also created a box plot comparing the distributions of the `earned gpm` column within the `result` column. That is, we plotted the distribution of `earned gpm` across both wins and losses.
 
