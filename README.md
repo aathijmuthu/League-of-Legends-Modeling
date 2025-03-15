@@ -79,3 +79,14 @@ We performed our bivariate analysis by plotting a scatter plot to describe the r
 ></iframe>
 
 The scatter plot shows a somewhat positively linear relationship between the two variables. In shorter game lengths, the scatter plot is more densely packed, and there are players who deal lots and little damage in these shorter games. However, when you look at longer games, players are almost always dealing a large amount of damage.
+
+We also created a box plot comparing the distributions of the `earned gpm` column within the `result` column. That is, we plotted the distribution of `earned gpm` across both wins and losses.
+
+<iframe
+  src="assets/gpm_by_result.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The box plot shows a shift in the two box plots. When looking at `earned gpm` in wins, all values of the box plot (min, q1, median, q3, max) are all shifted to the right, meaning that all these values are greater in wins. This is reasonable because players who earn more gold can buy better items, which ultimately helps them win the game.
