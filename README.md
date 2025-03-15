@@ -141,8 +141,6 @@ Since `minionkills` missingness appears **dependent on its unobserved value (zer
 ></iframe>
 
 
-
-
 # Hypothesis Testing
 
 ## Hypothesis Testing for Performance Comparison
