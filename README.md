@@ -90,3 +90,17 @@ We also created a box plot comparing the distributions of the `earned gpm` colum
 ></iframe>
 
 The box plot shows a shift in the two box plots. When looking at `earned gpm` in wins, all values of the box plot (min, q1, median, q3, max) are all shifted to the right, meaning that all these values are greater in wins. This is reasonable because players who earn more gold can buy better items, which ultimately helps them win the game.
+
+## Interesting Aggregates
+
+In order to confirm the scatter plot, we were curious to see how total damage differed between different game lengths. To do so, we created a pivot table and created five different buckets for the game lengths.
+
+| gamelength_minutes | damagetochampions  |
+|--------------------|--------------------|
+| (0, 20]            | 7428.907125        |
+| (20, 30]           | 10732.953278       |
+| (30, 40]           | 14352.552765       |
+| (40, 50]           | 20618.585977       |
+| (50, 60]           | 27926.046256       |
+
+The pivot table confirms the scatterplot, and we see that the total damage mean damage is increasing as the game length also increases. Particularly, we see a steeper increase in total damage from 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because there are a lot of team fights at the end of the game. 
