@@ -35,13 +35,6 @@ By analyzing these **performance statistics**, we aim to uncover how **different
 ### Selecting Relevant Columns
 To save time in the further data cleaning steps, we first only kept the relevant columns: `gameid`, `datacompleteness`, `date`, `game`, `side`, `position`, `playername`, `playerid`, `champion`, `gamelength`, `result`, `kills`, `deaths`, `assists`, `totalgold`, `total cs`, `earned gpm`, `damagetochampions`, `dpm`, `minionkills`, and `monsterkills`. This reduced the dataset size to include only the necessary information for analysis.
 
-```python
-df = df[['gameid', 'datacompleteness', 'date', 'game', 'side', 'position', 
-         'playername', 'playerid', 'champion', 'gamelength', 'result', 
-         'kills', 'deaths', 'assists', 'totalgold', 'total cs', 'earned gpm', 
-         'damagetochampions', 'dpm', 'minionkills', 'monsterkills']]
-```
-
 | gameid        | datacompleteness | date                | game | side | position   | playername | playerid                                | champion | gamelength | result | kills | deaths | assists | totalgold | total cs | earned gpm | damagetochampions | dpm     | minionkills | monsterkills |
 |---------------|------------------|---------------------|------|------|------------|------------|-----------------------------------------|----------|------------|--------|-------|--------|---------|-----------|----------|------------|-------------------|---------|-------------|--------------|
 | ESPORTSTMNT01 | complete         | 2022-01-10 07:44:08 | 1    | Blue | top        | Soboro     | oe:player:38e0af7278d6769d0c81d7c4b47ac1e | Renekton | 1713       | 0      | 2     | 3      | 2       | 10934     | 231.0    | 250.9282   | 15768.0           | 552.2942 | 220.0       | 11.0         |
@@ -104,3 +97,31 @@ In order to confirm the scatter plot, we were curious to see how total damage di
 | (50, 60]           | 27926.046256       |
 
 The pivot table confirms the scatterplot, and we see that the total damage mean damage is increasing as the game length also increases. Particularly, we see a steeper increase in total damage from 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because there are a lot of team fights at the end of the game. 
+
+# Hypothesis Testing
+
+## Hypothesis Testing for Performance Comparison
+
+In this analysis, we tested the performance difference between **mid laners** and **top laners** across all games:
+
+1. **Null Hypothesis**: 
+   - There is **no difference** in the average performance between mid laners and top laners across all games.
+   - Performance is quantified by a **weighted average** of the following metrics:
+     - **Kills**
+     - **Deaths**
+     - **Assists**
+     - **Total CS**
+
+2. **Alternative Hypothesis**: 
+   - **Mid laners** have a **higher average performance** than top laners across all games.
+
+3. **Test Statistic**:
+   - The test statistic used to evaluate the hypothesis is the **difference in the mean performance** between the two groups (mid laners and top laners).
+
+We defined `performance` to be the following:
+
+$$
+(5 \times \text{kills}) + (2 \times \text{assists}) - (2 \times \text{deaths}) + \frac{4 \times \text{total cs}}{100}
+$$
+
+This framework allows us to determine if there is a statistically significant difference in the performance of mid laners compared to top laners.
