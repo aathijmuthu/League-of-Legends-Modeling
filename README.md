@@ -88,6 +88,8 @@ The box plot shows a shift in the two box plots. When looking at `earned gpm` in
 
 In order to confirm the scatter plot, we were curious to see how total damage differed between different game lengths. To do so, we created a pivot table and created five different buckets for the game lengths.
 
+<div align="center">
+
 | gamelength_minutes | damagetochampions  |
 |--------------------|--------------------|
 | (0, 20]            | 7428.907125        |
@@ -95,6 +97,9 @@ In order to confirm the scatter plot, we were curious to see how total damage di
 | (30, 40]           | 14352.552765       |
 | (40, 50]           | 20618.585977       |
 | (50, 60]           | 27926.046256       |
+
+</div>
+
 
 The pivot table confirms the scatterplot, and we see that the total damage mean damage is increasing as the game length also increases. Particularly, we see a steeper increase in total damage from 30-40 minute games to 40-50 minute games, and from 40-50 minute games to 50-60 minute games, which is reasonable because there are a lot of team fights at the end of the game. 
 
