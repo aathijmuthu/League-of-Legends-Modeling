@@ -375,6 +375,29 @@ This approach aligns with the provided example and ensures the model performs we
 
 We’ll use a **two-sided test**, with the **test statistic** being the **mean absolute difference of precision scores** between the two groups.  
 
+## The Permutation Test  
+
+1. **Shuffle** the group assignments **1,000 times** while keeping predictions and true labels fixed.  
+2. **For each permutation**:  
+   - Recompute the **precision** for the shuffled groups.  
+   - Compute the **absolute difference** in precision between the two groups.  
+3. **Calculate the p-value** as the proportion of permutations where the absolute difference **equals or exceeds** the observed absolute difference.  
+
+
+After running the permutation test, we ended up with the following metrics.
+
+```
+Fairness Analysis Results:
+Precision for high-assist group (Group X): 0.9687
+Precision for low-assist group (Group Y): 0.9684
+Observed difference (Precision_X - Precision_Y): 0.0003
+P-value: 0.8610
+```
+
+<img width="733" alt="image" src="assets/Xnip2025-03-14_23-13-37.jpg" />
+
+
+
 
 
 
