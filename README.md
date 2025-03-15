@@ -146,7 +146,7 @@ This process allowed us to determine whether the observed result was statistical
 
 After running the permutation test to test for statistical significance, we concluded with the following values.
 
-```python
+```
 Observed Difference in Means: 6.386
 Average value of Permuted Differences: -0.000327
 P-value: 0.0000
