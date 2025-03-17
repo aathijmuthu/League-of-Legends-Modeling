@@ -4,6 +4,8 @@
 
 In this project, we explore how a player's **position** in *League of Legends* affects their **in-game performance** and how we can use **performance statistics** to **predict a player’s position**. *League of Legends* is a team-based strategy game where players take on distinct roles—**Top, Jungle, Mid, ADC, and Support**—each with unique responsibilities and playstyles.  
 
+## Authors: Aathi Muthu and Brian Can
+
 ## ❓ Why Does This Matter?  
 Understanding how **in-game performance** relates to **player position** has multiple valuable applications:  
 - 🔹 **Competitive Insights:** Helps players and coaches analyze role-based performance trends.  
